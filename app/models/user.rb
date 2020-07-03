@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable
 
   validates :fullname, presence: true, length: {maximum: 50}
+  
+  #One user can have many rooms
+  has_many :rooms
 
   #This method tries to find an existing user by the provider and uid fields. If no user is found, 
   #a new one is created with a random password and some extra information

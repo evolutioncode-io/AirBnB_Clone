@@ -44,6 +44,8 @@ gem 'toastr-rails', '~> 1.0'
 #Gem omniauth for facebook authentication
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook', '~> 4.0'
+#gem paperclip for image upload
+gem 'paperclip', '~> 5.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
