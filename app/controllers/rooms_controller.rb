@@ -1,12 +1,12 @@
 class RoomsController < ApplicationController
-  #This method will be runned before all, except at index, new adn create
+  #This method will be runned before all, except at index, new and create
   before_action :set_room, except: [:index, :new, :create]
   #This is for the user needs to be logged
   before_action :authenticate_user!, except: [:show]
   before_action :is_authorised, only: [:listing, :pricing, :description, :photo_upload, :amenities, :location, :update]
 
   def index
-    @rooms = current.user.rooms
+    @rooms = current_user.rooms
   end
 
   def new
@@ -23,7 +23,8 @@ class RoomsController < ApplicationController
   end
 
   def show
-
+    #return all the photos
+    @photos = @room.photos
   end
 
   def listing
@@ -46,7 +47,13 @@ class RoomsController < ApplicationController
   end
 
   def update
-    if @room.update(room_params)
+    #update with normal params
+    new_params = room_params
+    #this prevent if client manipulate from the option browser developer and want to save to false at database
+    # and saved it to true
+    new_params = room_params.merge(active: true) if is_ready_room
+
+    if @room.update(new_params)
       flash[:notice] = "Saved..."
     else
       flash[:notice] = "Something went wrong..."
@@ -64,6 +71,10 @@ class RoomsController < ApplicationController
 
   def is_authorised
     redirect_to root_path, alert: "You don't have permission" unless current_user.id == @room.user_id
+  end
+
+  def is_ready_room
+    !@room.active && !@room.price.blank? && !@room.listing_name.blank? && !@room.photos.blank? && !@room.address.blank? 
   end
 
   #this is for params that will be modified
