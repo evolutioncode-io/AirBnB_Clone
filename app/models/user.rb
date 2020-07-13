@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :rooms
   has_many :reservations
 
+  #Reviews for reservations
+  has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"
+  has_many :host_reviews, class_name: "HostReview", foreign_key: "host_id"
+
   #This method tries to find an existing user by the provider and uid fields. If no user is found, 
   #a new one is created with a random password and some extra information
   def self.from_omniauth(auth)
