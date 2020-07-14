@@ -14,7 +14,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <%= f.text_field :address, placeholder: "What is your address?", class: "form-control", required: true, id: "autoaddress" %>
+                                    <%= f.text_field :address, placeholder: "What is your address?", class: "form-control" %>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -27,10 +27,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // To autocomplete the search
-    $(function() {
-        $("#autoaddress").geocomplete();
-    })
-</script>
