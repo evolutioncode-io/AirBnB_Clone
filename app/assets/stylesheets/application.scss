@@ -23,6 +23,10 @@ a{
     color: #00A699;
 }
 
+.text-red, .icon-red{
+    color: #FF5A5F;
+}
+
 //Navbar
 .navbar{
     background-color: #FFFFFF;
@@ -302,7 +306,46 @@ a{
     padding-top: 10px;
 }
 
+// SEARCH
 
+#main {
+    height: 100%;
+    overflow: hidden;
+}
+
+#left {
+    padding: 10px 400px 10px 20px;
+    overflow: scroll;
+    height: 100%;
+}
+
+#right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100%;
+}
+
+.map_price {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #00A699;
+}
+
+// Home Page 
+
+.discovery-card{
+    background-size: cover;
+    background-position: center;
+    height: 326px;
+}
+
+.banner {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 
 
 
