@@ -35,4 +35,27 @@ class User < ApplicationRecord
       end
     end
   end
+
+  #To sms with the gem twilio
+  def generate_pin
+    #Random pin
+    self.pin = SecureRandom.hex(2)
+    self.phone_verified = false
+    save
+  end
+
+  def send_pin
+    # set up a client to talk to the Twilio REST API
+    @client = Twilio::REST::Client.new
+    #Send an SMS
+    @client.messages.create(
+      from: '+14252742501',
+      to: self.phone_number,
+      body: "Your pin is #{self.pin}"
+    )
+  end
+
+  def verify_pin(entered_pin)
+    update(phone_verified: true) if self.pin == entered_pin
+  end
 end

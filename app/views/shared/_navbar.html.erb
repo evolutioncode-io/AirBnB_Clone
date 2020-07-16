@@ -1,43 +1,66 @@
-<nav class="navbar navbar-expand-lg">
-  <%= link_to "AirPikachu", root_path, class: "navbar-brand" %>
+<nav class="navbar navbar-expand-lg" style="margin-bottom: 0px">
+<div class="container">
+  <%= link_to "AirKong", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <%= form_tag search_path, class: "navbar-form navbar-left", method: :get do %>
-      <div class="form-group">
+      <div class="form-inline">
         <%= text_field_tag :search, params[:search], placeholder: "Anywhere", class: "form-control" %>
       </div>
     <% end %>
     <ul class="navbar-nav ml-auto">
+    <div class="form-inline">
         <li>
-          <button class="btn btn-form btn-small">
+          <button class="btn btn-form btn-small my-2 my-sm-0 mx-2">
             <%= link_to "Become a Host", new_room_path, style: "color: white; text-decoration: none;" %>
           </button>
         </li>
         <% if (!user_signed_in?) %>
-            <li><a><%= link_to "Login", new_user_session_path %></a></li>
-            <li><a><%= link_to "Sign up", new_user_registration_path %></a></li>
+            <li class="mx-2"><a><%= link_to "Login", new_user_session_path %></a></li>
+            <li class="mx-2"><a><%= link_to "Sign up", new_user_registration_path %></a></li>
         <% else %>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag avatar_url(current_user), class: "rounded-circle avatar-small" %>&nbsp;
                 <%= current_user.fullname %>
                 </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" ><%= link_to "Manage Listings", rooms_path %></a>
-                <a class="dropdown-item" ><%= link_to "List Your space", new_room_path %></a>
-                <a class="dropdown-item" ><%= link_to "Your Reservations", your_reservations_path %></a>
-                <a class="dropdown-item" ><%= link_to "Your Trips", your_trips_path %></a>
+                <button class="dropdown-item" ><%= link_to "Dashboard", dashboard_path %></button>
+                <button class="dropdown-item" ><%= link_to "Manage Listings", rooms_path %></button>
+                <button class="dropdown-item" ><%= link_to "List Your space", new_room_path %></button>
+                <button class="dropdown-item" ><%= link_to "Your Reservations", your_reservations_path %></button>
+                <button class="dropdown-item" ><%= link_to "Your Trips", your_trips_path %></button>
             <div class="dropdown-divider"></div>
-                <a class="dropdown-item" ><%= link_to "Edit Profile", edit_user_registration_path %></a>
-                <a class="dropdown-item" ><%= link_to "Log out", destroy_user_session_path, method: :delete %></a>
+                <button class="dropdown-item" ><%= link_to "Edit Profile", edit_user_registration_path %></button>
+                <button class="dropdown-item" ><%= link_to "Log out", destroy_user_session_path, method: :delete %></button>
                 
             </div>
             </li>
         <% end %>
-      
+      </div>
     </ul>
    </div>
+  </div>
 </nav>
+
+<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("rooms/#{params[:id]}") %>
+
+  <nav class="navbar navbar-expand-lg" style="background-color: #565A5C">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+              <div class="form-inline">
+              <li <% if current_page?(dashboard_path) %> class="nav-link" <% end %>><%= link_to "Dashboard", dashboard_path %></li>
+              
+              <li <% if current_page?(rooms_path) %> class="nav-link " <% end %>><%= link_to "Manage Listings", rooms_path %></li>
+              <li <% if current_page?(host_calendar_path) %> class="nav-link" <% end %>><%= link_to "Host Calendar", host_calendar_path %></li>
+              </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<% end %>

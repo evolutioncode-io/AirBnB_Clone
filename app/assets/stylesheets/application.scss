@@ -1,10 +1,12 @@
 @import "bootstrap";
 @import "toastr";
+@import "fullcalendar";
 
 body{
     color: #565a5c;
     background-color: #F8F8F8;
     font-family: "Varela Round", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    
 }
 
 .asd{
@@ -136,11 +138,16 @@ a{
 
 
 .avatar-small{
-    width: 28px;
+    width: 38px;
 }
 
 .avatar-medium{
     width: 48px;
+}
+
+.avatar-large{
+    width: 200px;
+    
 }
 
 //Forms
@@ -160,6 +167,15 @@ a{
 
 .form-group textarea{
     border: 1px solid #00A699;
+}
+
+.form-group input[type="radio"] {
+    height: 15px;
+    margin-right: 10px;
+}
+
+.btn-group label{
+    margin-right: 15px;
 }
 
 .form-group select{
@@ -259,6 +275,10 @@ a{
 
 .card-header{
     padding: 0;
+    color: #ffffff;
+    background-color: #00A699;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .card-header img{
@@ -347,5 +367,43 @@ a{
     margin-bottom: 50px;
 }
 
+//  CALENDAR
+
+.fc-content.Waiting{
+    background-color: #C9CC6D;
+}
+
+.fc-past{
+    background-color: lightgray;
+}
+
+.fc-day{
+    position: relative;
+}
+
+.fc-content{
+    background-color: #00A699;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.fc-event{
+    border: 0px;
+    background-color: transparent;
+}
+
+.fc-title{
+    font-size: 14px;
+    position: relative;
+    top: 7px;
+    left: 20px;
+}
+
+.day-price {
+    position: absolute;
+    color: #EAA90B;
+    bottom: 2px;
+    right: 2px;
+}
 
 

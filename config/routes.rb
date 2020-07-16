@@ -6,7 +6,13 @@ Rails.application.routes.draw do
              path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
              controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      post '/verify_phone_number' => 'users#verify_phone_number'
+      patch '/update_phone_number' => 'users#update_phone_number'
+    end
+  end
+
   resources :rooms, except: [:edit] do
     member do
       get 'listing'
@@ -20,6 +26,7 @@ Rails.application.routes.draw do
     end
     resources :photos, only: [:create, :destroy]
     resources :reservations, only: [:create]
+    resources :calendars
   end
 
   resources :guest_reviews, only: [:create, :destroy]
@@ -29,5 +36,18 @@ Rails.application.routes.draw do
   get '/your_reservations' => 'reservations#your_reservations'
 
   get 'search' => 'pages#search'
+
+  # --- AirKong -----
+
+  get 'dashboard' =>  'dashboards#index'
+
+  resources :reservations, only: [:approve, :decline] do
+    member do
+      post '/approve' => "reservations#approve"
+      post '/decline' => "reservations#decline"
+    end
+  end
+
+  get '/host_calendar' => "calendars#host"
 
 end
