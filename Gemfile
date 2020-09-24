@@ -57,6 +57,12 @@ gem 'twilio-ruby', '~> 5.39.1'
 #Calendar
 gem 'fullcalendar-rails', '~> 3.4.0'
 gem 'momentjs-rails', '~> 2.17.1'
+#Payments
+gem 'stripe'
+gem 'rails-assets-card', source: 'https://rails-assets.org'
+gem 'omniauth-stripe-connect'
+#Chart
+gem 'chartkick', '~> 2.2.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

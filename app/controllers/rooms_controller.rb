@@ -14,6 +14,12 @@ class RoomsController < ApplicationController
   end
 
   def create
+    # CHECAR ESTO
+    #To check when we will create a new room, first you need to connect with stripe
+    # if !current_user.is_active_host
+    #   return redirect_to payout_method_path, alert: "Please Connect to Stripe Express first"
+    # end
+
     @room = current_user.rooms.build(room_params)
     if @room.save
       redirect_to listing_room_path(@room), notice: "Saved..."

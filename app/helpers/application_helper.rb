@@ -11,4 +11,8 @@ module ApplicationHelper
             "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identical&s=150"
         end
     end
+
+    def stripe_express_path
+        "https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://connect.stripe.com/hosted/oauth&client_id=ca_I4kU9IWrhDOIMOGlsRmUPIddpfzNQ4Qo&state=onbrd_I4l0Kv3OrMf5EoxONQR8gKimud&stripe_user[country]=MX"
+    end
 end

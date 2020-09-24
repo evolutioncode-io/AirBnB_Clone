@@ -53,10 +53,13 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
               <div class="form-inline">
-              <li <% if current_page?(dashboard_path) %> class="nav-link" <% end %>><%= link_to "Dashboard", dashboard_path %></li>
+              <li <% if current_page?(dashboard_path) %> class="nav-link active" <% end %>><%= link_to "Dashboard", dashboard_path %></li>
               
-              <li <% if current_page?(rooms_path) %> class="nav-link " <% end %>><%= link_to "Manage Listings", rooms_path %></li>
-              <li <% if current_page?(host_calendar_path) %> class="nav-link" <% end %>><%= link_to "Host Calendar", host_calendar_path %></li>
+              <li <% if current_page?(rooms_path) %> class="nav-link active" <% end %>><%= link_to "Manage Listings", rooms_path %></li>
+              <li <% if current_page?(revenues_path) %> class="nav-link active " <% end %>><%= link_to "Revenues", revenues_path %></li>
+              <li <% if current_page?(host_calendar_path) %> class="nav-link active" <% end %>><%= link_to "Host Calendar", host_calendar_path %></li>
+              <li <% if current_page?(payment_method_path) %> class="nav-link active" <% end %>><%= link_to "Account Settings", payment_method_path %></li>
+              
               </div>
         </ul>
       </div>

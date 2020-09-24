@@ -311,4 +311,6 @@ Devise.setup do |config|
 
   #Authentication for facebook, this is to declare the provider
   config.omniauth :facebook, '393880314902428', '72fb88e71201a1a19fac999aba0c25a5', scope: 'email', info_fields: 'email, name'
+  #Stripe
+  config.omniauth :stripe_connect, 'ca_I4kU9IWrhDOIMOGlsRmUPIddpfzNQ4Qo', 'sk_test_51HTYAWBg8mCs9xMbKUQ3nCw84F4R9SCWKSfW0dX10g9oytCuORIyEhiODejMljj1XPt5wvKTcHI6XSP7DBRinTVk00XPoHYyjN', scope: 'read_write', stripe_landing: 'login'
 end
