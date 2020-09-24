@@ -14,6 +14,13 @@ class User < ApplicationRecord
   has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"
   has_many :host_reviews, class_name: "HostReview", foreign_key: "host_id"
 
+  has_one :setting # An user can have one setting
+  after_create :add_setting # After create one user, will have a setting
+
+  def add_setting
+    Setting.create(user: self, enable_sms: true, enable_email: true)
+  end
+
   #This method tries to find an existing user by the provider and uid fields. If no user is found, 
   #a new one is created with a random password and some extra information
   def self.from_omniauth(auth)

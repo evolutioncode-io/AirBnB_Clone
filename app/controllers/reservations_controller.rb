@@ -67,7 +67,7 @@ class ReservationsController < ApplicationController
         )
     end
 
-    #Stripe
+    #Stripe, this method will charge to stripe the total amount of the reservation
     def charge(room, reservation)
         if !reservation.user.stripe_id.blank?
             customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
@@ -83,9 +83,12 @@ class ReservationsController < ApplicationController
             })
             
             if charge
+                #Change the status to approve
                 reservation.Approved!
-                ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later
-                send_sms(room, reservation)
+                #Send an email if in the settings have enable_email true
+                ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later if reservation.user.setting.enable_email
+                #send sms if in the settings have enable_sms true
+                send_sms(room, reservation) if room.user.setting.enable_sms
                 flash[:notice] = "Reservation created Succesfully!"
             else
                 reservation.Declined!
