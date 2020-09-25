@@ -28,7 +28,9 @@
         <div class="card">
             <div class="card-header">Notifications</div>
             <div class="card-body">
-
+                <%= link_to notifications_path do %>
+                    You have <span id="num_of_unread"><%= current_user.unread %></span> notification(s)
+                <% end %>
             </div>
         </div>
         <br/>
