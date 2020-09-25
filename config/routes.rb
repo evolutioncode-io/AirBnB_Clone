@@ -62,4 +62,7 @@ Rails.application.routes.draw do
   get '/notification_settings' => 'settings#edit'
   post '/notification_settings' => 'settings#update'
 
+  # Action cable for real time messages
+  mount ActionCable.server => '/cable'
+
 end

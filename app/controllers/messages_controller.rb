@@ -16,11 +16,18 @@ class MessagesController < ApplicationController
         @messages = @conversation.messages.order("created_at DESC")
 
         if @message.save
+            # run the server for the conversation
+            ActionCable.server.broadcast "conversation_#{@conversation.id}", message: render_message(@message)
             redirect_to conversation_messages_path(@conversation)
+            #return conversation_messages_url(@conversation)
         end
     end
 
     private
+
+    def render_message(message)
+        self.render(partial: 'messages/message', locals: {message: message})
+    end
 
     def set_conversation
         @conversation = Conversation.find(params[:conversation_id])
