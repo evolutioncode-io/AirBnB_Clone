@@ -1,4 +1,4 @@
-$(() ->
+$(() -> # Check THIS
   App.messages = App.cable.subscriptions.create {channel: 'MessagesChannel', id: $('#conversation_id').val() },
   
   received: (data) ->

@@ -1,5 +1,5 @@
 class MessagesChannel < ApplicationCable::Channel
-  def subscribed
+  def subscribed #Check This
     stream_from "conversation_#{params[:id]}"
   end
 

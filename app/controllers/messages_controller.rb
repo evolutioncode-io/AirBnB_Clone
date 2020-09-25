@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
 
         if @message.save
             # run the server for the conversation
-            ActionCable.server.broadcast "conversation_#{@conversation.id}", message: render_message(@message)
+            ActionCable.server.broadcast "conversation_#{@conversation.id}", message: render_message(@message) #Check this
             redirect_to conversation_messages_path(@conversation)
             #return conversation_messages_url(@conversation)
         end
