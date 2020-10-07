@@ -75,7 +75,7 @@ class ReservationsController < ApplicationController
                 customer: customer.id,
                 amount: reservation.total * 100,
                 description: room.listing_name,
-                currency: 'usd',
+                currency: 'usd'
                 # destination: { # CHECAR ESTO
                 #     amount: reservation.total * 80, # 80% of the total amount goes to the host
                 #     account: room.user.merchant_id # Hosts Striper customer ID
