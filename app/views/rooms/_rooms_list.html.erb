@@ -1,5 +1,5 @@
 <% rooms.each do |room| %>
-    <div class="col-md-4">
+    <div class="col-md-4 my-1">
         <div class="card">
             <div class="card-header">
                 <%= image_tag room.cover_photo(:medium) %>
@@ -11,6 +11,7 @@
             </div>
         </div>
     </div>
+   
     <script>
     $('#star_<%= room.id %>').raty({
         path: '/assets',
