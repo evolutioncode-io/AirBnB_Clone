@@ -275,6 +275,9 @@ a{
 
 .card-header{
     padding: 0;
+    text-align: center;
+    //margin-top: 5px;
+    //margin-bottom: 6px;
     color: #ffffff;
     background-color: #00A699;
     font-size: 18px;
@@ -417,3 +420,11 @@ a{
     left: -5px;
 }
 
+.row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-item:active{
+    color: rgb(167, 76, 76);
+}

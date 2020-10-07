@@ -3,7 +3,8 @@ module ApplicationHelper
     def avatar_url(user)
         #Load the facebook image
         if user.image
-            "https://graph.facebook.com/v2.6/#{user.uid}/picture?type=small"
+            #"https://graph.facebook.com/v2.6/#{user.uid}/picture"
+            'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg'
             
         else
             #Load the gravatar image
