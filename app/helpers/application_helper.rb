@@ -5,6 +5,7 @@ module ApplicationHelper
         if user.image
             #"https://graph.facebook.com/v2.6/#{user.uid}/picture"
             'https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg'
+            #"http://graph.facebook.com/v8.0/#{user.uid}/picture"
             
         else
             #Load the gravatar image
