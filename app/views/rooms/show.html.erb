@@ -1,12 +1,12 @@
 <br/>
 <div class="container">
-    <div class="row">
+    <div class="row text-center">
         <div class="col-md-12">
-            <%= image_tag @room.cover_photo(nil), width: "80%" %>
+            <%= image_tag @room.cover_photo(nil), width: "80%", height: "auto" %>
         </div>
     </div>
 </div>
-<br/>
+
 <div class="container">
     <div class="row">
         <%# Left panel %>
@@ -89,7 +89,7 @@
                         <div class="carousel-inner">
                             <% @photos.each do |photo| %>
                                 <div class="carousel-item <%= 'active' if photo.id == @photos[0].id %>">
-                                <%= image_tag photo.image.url() %>
+                                <%= image_tag photo.image.url(), width: "100%" %>
                                 </div>
                             <% end %>
                         </div>
@@ -150,10 +150,10 @@
             <hr/>
 
             <%# Near by Rooms %>
+            <h3>Near by</h3>
             <div class="row">
-                <h3>Near by</h3>
                 <% for room in @room.nearbys(10) %>
-                    <div class="col-md-4">
+                    <div class="col-sm-3">
                         <div class="card">
                             <div class="card-header">
                                 <%= image_tag room.cover_photo(nil), width: "30%" %>
